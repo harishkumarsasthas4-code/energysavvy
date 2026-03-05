@@ -1,0 +1,36 @@
+name: 'Energy Savvy Code Analyzer'
+description: 'Detects energy anti-patterns in JavaScript and Python code'
+author: 'EnergySavvyCode'
+
+inputs:
+  github-token:
+    description: 'GitHub token for posting comments'
+    required: true
+  threshold:
+    description: 'Impact threshold for warnings (low/medium/high)'
+    required: false
+    default: 'medium'
+  languages:
+    description: 'Languages to analyze (js,python or all)'
+    required: false
+    default: 'all'
+  fail-on-impact:
+    description: 'Fail the build if impact exceeds threshold'
+    required: false
+    default: 'false'
+
+outputs:
+  energy-score:
+    description: 'Overall energy efficiency score (0-100)'
+  issues-found:
+    description: 'Number of issues detected'
+  estimated-savings:
+    description: 'Estimated energy savings in kWh'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'zap'
+  color: 'green'
